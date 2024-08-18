@@ -1,0 +1,30 @@
+@startuml Chess Game
+title Use Case Diagram Chess Game
+left to right direction
+skinparam actorStyle awesome
+actor Player
+package chessGame {
+
+rectangle "Screen Game" {
+    usecase "Start Game" as StartGame
+    usecase "Move Piece" as MovePiece
+    usecase "End Game" as EndGame
+    usecase "Propose Draw" as ProposeDraw
+    usecase "Surrender" as Surrender
+}
+
+rectangle "Screen System" {
+    usecase "Reset Game" as ResetGame
+    usecase "Pause Game" as PauseGame
+}
+
+Player -down-> StartGame
+Player -down-> MovePiece
+Player -down-> ResetGame
+Player -down-> PauseGame
+Player -down-> EndGame
+
+EndGame <|- ProposeDraw
+EndGame <|- Surrender
+}
+@enduml
